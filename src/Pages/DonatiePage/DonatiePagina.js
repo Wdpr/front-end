@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../../config.json";
 
-export function DonatiePagina () {
+export function DonatiePagina() {
     const navigate = useNavigate();
     const [donatieBedrag, setDonatieBedrag] = useState(0);
 
@@ -21,7 +21,7 @@ export function DonatiePagina () {
             BezoekerId: gebruiker.id
         };
 
-        fetch(config.ApiUrl+"/api/donatie/nieuweDonatie", {
+        fetch(config.ApiUrl + "/api/donatie/nieuweDonatie", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
             body: JSON.stringify(donatie)
@@ -39,7 +39,6 @@ export function DonatiePagina () {
                 alert("Donatie niet gelukt. Mogelijk personeel");
             });
     }
-
 
     return (
         <>

@@ -9,7 +9,6 @@ export class NavMenu extends Component {
 
   constructor(props) {
     super(props);
-
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.LogUit = this.LogUit.bind(this);
     this.state = {
@@ -30,7 +29,6 @@ export class NavMenu extends Component {
   }
 
   render() {
-    
     return (
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
@@ -62,7 +60,6 @@ export class NavMenu extends Component {
                   <NavLink tag={Link} className="text-dark" to="/Login">Login/Registreren</NavLink>
                 </NavItem>
               }
-              
             </ul>
           </Collapse>
         </Navbar>

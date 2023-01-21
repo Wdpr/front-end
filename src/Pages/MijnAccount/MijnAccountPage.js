@@ -5,7 +5,6 @@ import '../../Styles/MijnAccountStyle.css';
 export class MijnAccountPage extends React.Component {
     static displayName = MijnAccountPage.name
 
-
     render() {
         return (
             <div>
@@ -21,5 +20,4 @@ export class MijnAccountPage extends React.Component {
             </div>
         )
     }
-
 }

@@ -20,7 +20,7 @@ export const ReserveringPage = () => {
         var details = {
             'amount': prijs,
             'reference': reserveringId,
-            'url': config.ApiUrl+'/api/reservering/fakepay'
+            'url': config.ApiUrl + '/api/reservering/fakepay'
         };
 
         var formBody = [];
@@ -45,7 +45,7 @@ export const ReserveringPage = () => {
 
     function postReservering() {
         const token = sessionStorage.getItem("token")
-        fetch(config.ApiUrl+"/api/reservering", {
+        fetch(config.ApiUrl + "/api/reservering", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
             body: JSON.stringify({
@@ -62,6 +62,7 @@ export const ReserveringPage = () => {
             }
         })
     }
+
     function Bevestig() {
         postReservering()
         naarBetaling(1)

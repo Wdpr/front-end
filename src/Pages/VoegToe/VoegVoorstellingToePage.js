@@ -34,7 +34,7 @@ export function VoorstellingAdding() {
                 }
             })
         } else {
-            fetch(config.ApiUrl+"/api/voorstelling/nieuweVoorstelling", {
+            fetch(config.ApiUrl + "/api/voorstelling/nieuweVoorstelling", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Authorization": "Bearer " + sessionStorage.getItem("token") },
                 body: JSON.stringify({
@@ -60,7 +60,7 @@ export function VoorstellingAdding() {
 
     async function fetchZaalData() {
         try {
-            const response = await fetch(config.ApiUrl+"/api/zaal");
+            const response = await fetch(config.ApiUrl + "/api/zaal");
             const responseJSON = await response.json();
             console.log(responseJSON);
             setZaalData(responseJSON);

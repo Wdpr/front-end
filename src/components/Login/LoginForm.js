@@ -18,11 +18,12 @@ export function LoginForm() {
         }
         return false
     }
+
     function submitHandler(e) {
         e.preventDefault()
         if (!emailEnWachtwoordCheck()) return
 
-        fetch(config.ApiUrl+"/api/bezoeker/login", {
+        fetch(config.ApiUrl + "/api/bezoeker/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -36,7 +37,7 @@ export function LoginForm() {
                     alert("ingelogd als " + data.gebruiker.userName)
                     sessionStorage.setItem('token', data.token)
                     sessionStorage.setItem('gebruiker', JSON.stringify({ username: data.gebruiker.userName, id: data.gebruiker.id }))
-                    window.location.href = "/"          // ook mogelijk met useNavigate()
+                    window.location.href = "/"          // ook mogelijk met useNavigate(), maar dat reload de pagina niet, wat wel nodig is
                 } else {
                     alert("inloggen mislukt")
                 }

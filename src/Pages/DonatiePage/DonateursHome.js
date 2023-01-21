@@ -27,12 +27,12 @@ export const DonateursHome = () => {
                 alert("U bent niet ingelogd")
                 Navigate("/login")
             };
-            const response = await fetch(config.ApiUrl+"/api/donatie", {
+            const response = await fetch(config.ApiUrl + "/api/donatie", {
                 method: "GET",
                 headers: { "Authorization": "Bearer " + token }
             });
             const data = await response.json();
-            const totaleBedrag = 0;
+            // const totaleBedrag = 0;
             setDonaties(data.filter(donatie => donatie.bezoekerId === state.bezoeker.id));
             setDonatieTotaal(data.filter(donatie => donatie.bezoekerId === state.bezoeker.id).reduce((a, b) => a + b.bedrag, 0));
         };
@@ -49,7 +49,7 @@ export const DonateursHome = () => {
 
     useEffect(() => {
         async function fetchData() {
-            let response = await fetch(config.ApiUrl+'/api/Voorstelling');
+            let response = await fetch(config.ApiUrl + '/api/Voorstelling');
             let data = await response.json();
             setVoorstellingen(data);
             setLoading(false);
@@ -113,19 +113,15 @@ export const DonateursHome = () => {
                                 ))}
                             </select>
                         </div>
-
                         <div className='VoorstellingPageContainer'>
                             <div className='bigCardsContainer'>
                                 {loading ? "loading..." : filteredVoorstellingen.map(voorstelling => {
-                                    return (
-                                        <VoorstellingBigCard key={voorstelling.id} info={voorstelling} />
-                                    )
+                                    return <VoorstellingBigCard key={voorstelling.id} info={voorstelling} />
                                 })}
                             </div>
                         </div>
                     </div>
                 )}
-
                 {selectedItem === 'Bekijk mijn transacties' && (
                     <div className="naamDiv" >
                         <h1>Mijn transacties</h1>

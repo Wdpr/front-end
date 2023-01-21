@@ -8,7 +8,7 @@ export const Betaling = () => {
     return (
         <div>
             <h1>Betaling</h1>
-            <div dangerouslySetInnerHTML={{__html: state.data}}></div>
+            <div dangerouslySetInnerHTML={{ __html: state.data }}></div>
         </div>
     )
 }

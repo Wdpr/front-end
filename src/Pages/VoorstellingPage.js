@@ -8,11 +8,10 @@ export class VoorstellingPage extends React.Component {
         this.state = { voorstellingen: [], loading: true, selectedGenre: null };
         this.handleGenreChange = this.handleGenreChange.bind(this);
     }
+
     async componentDidMount() {
-        let response = await fetch(config.ApiUrl+'/api/Voorstelling');
+        let response = await fetch(config.ApiUrl + '/api/Voorstelling');
         let data = await response.json();
-
-
         this.setState({ voorstellingen: data, loading: false });
     }
 
@@ -25,9 +24,7 @@ export class VoorstellingPage extends React.Component {
             ? this.state.voorstellingen.filter(voorstelling => voorstelling.genre === this.state.selectedGenre)
             : this.state.voorstellingen;
 
-            filteredVoorstellingen.sort((b, a) => new Date(a.datumDateTime) - new Date(b.datumDateTime));
-    
-            
+        filteredVoorstellingen.sort((b, a) => new Date(a.datumDateTime) - new Date(b.datumDateTime));
 
         return (
             <div>
@@ -45,20 +42,17 @@ export class VoorstellingPage extends React.Component {
                         ))}
                     </select>
                 </div>
-                
                 <div className='VoorstellingPageContainer'>
                     <div className='bigCardsContainer'>
                         {this.state.loading ? "loading..." : filteredVoorstellingen.map(voorstelling => {
-                            const vandaagVoorPlus = new Date();                           
-                            const datum = new Date(voorstelling.datumDateTime);                           
-                            const plus300 = new Date(vandaagVoorPlus.setDate(vandaagVoorPlus.getDate() + 300));                           
+                            const vandaagVoorPlus = new Date();
+                            const datum = new Date(voorstelling.datumDateTime);
+                            const plus300 = new Date(vandaagVoorPlus.setDate(vandaagVoorPlus.getDate() + 300));
                             const huidigeDatum = new Date();
-
                             if ((datum > huidigeDatum) && (datum < plus300)) {
-                                
                                 return (
                                     <VoorstellingBigCard key={voorstelling.id} info={voorstelling} />
-                                )         
+                                )
                             }
                         })}
                     </div>

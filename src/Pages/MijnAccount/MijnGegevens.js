@@ -20,13 +20,12 @@ export function ToonMijnGevens() {
     }
 
     function DonateursPortaalButton() {
-        // go to Donateursportaal
         navigate('/DonateursHome', { state: { bezoeker: bezoeker } })
     }
 
     useEffect(() => {
         const haalReserveringOp = async () => {
-            const responsReserveringen = await fetch(config.ApiUrl+'/api/reservering/', {
+            const responsReserveringen = await fetch(config.ApiUrl + '/api/reservering/', {
                 method: "GET",
                 headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") },
             })
@@ -38,7 +37,7 @@ export function ToonMijnGevens() {
         const haalGebruikerOp = async () => {
             const gebruikerId = JSON.parse(sessionStorage.getItem("gebruiker")).id;
             const token = sessionStorage.getItem("token");
-            fetch(config.ApiUrl+"/api/bezoeker/" + gebruikerId, {
+            fetch(config.ApiUrl + "/api/bezoeker/" + gebruikerId, {
                 method: "GET",
                 headers: { "Authorization": "Bearer " + token },
             }).then(response => response.json()).then(data => {
@@ -51,7 +50,7 @@ export function ToonMijnGevens() {
         haalGebruikerOp();
     }, []);
 
-    useEffect(() => {}, [reserveringen, bezoeker])
+    useEffect(() => { }, [reserveringen, bezoeker])
 
     useEffect(() => {
         if (bezoeker == null) return
@@ -62,46 +61,36 @@ export function ToonMijnGevens() {
         const teTonenVoorkeuren = stringVanVoorkeuren.split(",");
         setVoorkeuren(teTonenVoorkeuren);
     }, [bezoeker])
-    
+
     return (
         <div>
             <div className="containervoorMijnGegevensEnMijnReserveringen">
                 <div>
                     <div className="mijnGegevens">
                         <h1>Mijn gegevens</h1>
-
                         <h5>Naam:</h5>
                         <p className="gebruikerGegevens">{JSON.parse(sessionStorage.getItem("gebruiker")).username}</p>
-
                         <h5>Email:</h5>
                         <p className="gebruikerGegevens">{bezoeker ? bezoeker.email : null}</p>
-
                         <h5>Voorkeuren</h5>
                         <ul className="gebruikerGegevens">
                             {voorkeuren.map((item) => (
                                 <li key={item}>{item}</li>
                             ))}
                         </ul>
-
-
                         <h5>Het Donatie Platform:</h5>
                         <button onClick={DonateursPortaalButton} className="donatieKnop">DonateursPortaal</button>
-
-
                         <button className="wijzigGegevens" onClick={() => setToonWijzigForm(!ToonWijzigForm)}>Wijzig gegevens</button>
                     </div>
                 </div>
-
                 <div className="mijnReserveringen">
                     <h1>Mijn reserveringen</h1>
-
                     <div className='alMijnReserveringen'>
                         {reserveringen ? reserveringen.map(reservering => {
                             return (
                                 <div key={reservering.id}>
                                     <h1 className="titelVoorstelling">{reservering.voorstelling.naam}</h1>
                                     <div className="reserveringCard">
-
                                         <div className="infoVanVoorstelling">
                                             <ul>
                                                 <li>Zaal {reservering.voorstelling.zaalId}</li>
@@ -109,11 +98,9 @@ export function ToonMijnGevens() {
                                                 <li>{reservering.voorstelling.tijd}</li>
                                             </ul>
                                         </div>
-
                                         <div className="alleStoelen">
                                             <ul>
                                                 <li><b>Stoelen: {reservering.stoelen.length}</b></li>
-
                                             </ul>
                                         </div>
                                         <div className="totaalprijs">
@@ -123,15 +110,12 @@ export function ToonMijnGevens() {
                                             </ul>
                                         </div>
                                     </div>
-
                                 </div>
                             )
                         }) : null}
                     </div>
-
                 </div>
             </div>
-
             <div className="wijzigGegevensContainer">
                 {ToonWijzigForm ? (
                     <div className="wijzigGegevensPortaal">
@@ -145,10 +129,8 @@ export function ToonMijnGevens() {
                                 <li onClick={handleClick}>Voorkeuren</li>
                             </ul>
                         </div>
-
                         {selectedItem === 'Naam' && (
                             <div className="naamDiv" >
-
                                 <form className="loginFormulier" >
                                     <div >
                                         <label className="formFieldLabel">
@@ -166,13 +148,10 @@ export function ToonMijnGevens() {
                                         <button className='formFieldButton' type="submit">Wijzig</button>
                                     </div>
                                 </form>
-
                             </div>
                         )}
-
                         {selectedItem === 'Email adres' && (
                             <div className="emailDiv">
-
                                 <form className="loginFormulier" >
                                     <div >
                                         <label className="formFieldLabel">
@@ -190,13 +169,10 @@ export function ToonMijnGevens() {
                                         <button className='formFieldButton' type="submit">Wijzig</button>
                                     </div>
                                 </form>
-
                             </div>
                         )}
-
                         {selectedItem === 'Wachtwoord' && (
                             <div className="wachtwoordDiv">
-
                                 <form className="loginFormulier" >
                                     <div >
                                         <label className="formFieldLabel">
@@ -220,23 +196,16 @@ export function ToonMijnGevens() {
                                         <button className='formFieldButton' type="submit">Wijzig</button>
                                     </div>
                                 </form>
-
                             </div>
                         )}
-
                         {selectedItem === 'Voorkeuren' && (
                             <div className="voorkeurenDiv">
                                 <VoorkeurenComponent />
-
                             </div>
                         )}
-
-
                     </div>
                 ) : null}
-
             </div>
-
             <div>
                 {bezoeker ? bezoeker.functie === "admin" ? (
                     <div className="werknemerPortaal">
@@ -244,7 +213,6 @@ export function ToonMijnGevens() {
                     </div>
                 ) : null : null}
             </div>
-
             <div>
                 {bezoeker ? bezoeker.functie === 'admin' ? (
                     <div className="adminPortaal">
@@ -253,7 +221,6 @@ export function ToonMijnGevens() {
                 ) : null : null}
             </div>
         </div>
-
     )
 }
 

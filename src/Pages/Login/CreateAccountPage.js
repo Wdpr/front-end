@@ -1,16 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import theaterFoto from '../../assets/theaterfoto.jpg';
 import { RegistreerForm } from "../../components/Login/RegistreerForm";
 
-
-export class CreateAccountPage extends React.Component{
+export class CreateAccountPage extends React.Component {
     static displayName = CreateAccountPage.name
 
-    
     render(props) {
-        return(
+        return (
             <div>
                 <div className="totaleLoginForm">
                     <div >
@@ -23,9 +20,7 @@ export class CreateAccountPage extends React.Component{
                         <Link to="/Login" className="formFieldLink">Heeft u al een account?</Link>
                     </div>
                 </div>
-                
-          </div>
+            </div>
         )
     }
 }
-

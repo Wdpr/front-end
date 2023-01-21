@@ -4,20 +4,19 @@ export const OverOns = () => {
     return (
         <div className="container">
             <div className="beginBanner">
-                    <div className="beginBannerText">
-                        <h4>Theater</h4>
-                        <h1>Laak</h1>
-                    </div>
+                <div className="beginBannerText">
+                    <h4>Theater</h4>
+                    <h1>Laak</h1>
                 </div>
+            </div>
             <h1>Over Ons</h1>
             <p>OVER LAAKTHEATER
-                Laaktheater probeert kunst persoonlijk te maken. 
-                Dat betekent dat we kunst op zo veel verschillende manieren brengen 
-                dat er voor iedereen een mogelijkheid is het zich eigen te maken en te beleven. 
-                Dat kunst niet eng is of niet voor jou, maar dat kunst echt voor en van iedereen is. 
-                Als je maar een manier vindt of krijgt aangeboden die bij je past. 
+                Laaktheater probeert kunst persoonlijk te maken.
+                Dat betekent dat we kunst op zo veel verschillende manieren brengen
+                dat er voor iedereen een mogelijkheid is het zich eigen te maken en te beleven.
+                Dat kunst niet eng is of niet voor jou, maar dat kunst echt voor en van iedereen is.
+                Als je maar een manier vindt of krijgt aangeboden die bij je past.
             </p>
-            
             <br />
             <h1>FAQ</h1>
             <h3>Wat is WDPR?</h3>
@@ -31,7 +30,6 @@ export const OverOns = () => {
 
             <h3>Wat is de locatie van dit theater?</h3>
             <p>De naam verklapt het al. Ons theater is te vinden in Den Haag ter Laak. Laak is sinds 1988 een stadsdeel van Den Haag. Het heeft een oppervlakte van 4,27 km² en is daarmee het kleinste van de stadsdelen van Den Haag. Er woonden in 2017 42.405 mensen.</p>
-
         </div>
     );
 }

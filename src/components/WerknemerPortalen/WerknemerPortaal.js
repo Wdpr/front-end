@@ -4,11 +4,7 @@ import VoorstellingAdding from "../../Pages/VoegToe/VoegVoorstellingToePage";
 import VoegZaalToe from "../../Pages/ZalenToevoegen/ZaalAdd";
 import { useState } from "react";
 
-
-
-
-export function WerknemerPortaal(){
-
+export function WerknemerPortaal() {
     const [showArtiest, setShowArtiest] = useState(false);
     const [showZaal, setShowZaal] = useState(false);
     const [showVoorstelling, setShowVoorstelling] = useState(false);
@@ -24,7 +20,6 @@ export function WerknemerPortaal(){
         <div>
             <h1>Werknemer portaal</h1>
             <br />
-
             <button onClick={handleClick}>Artiest toevoegen </button>
             <button onClick={handleClick}>Zaal toevoegen </button>
             <button onClick={handleClick}>Voorstelling toevoegen </button>
@@ -33,7 +28,6 @@ export function WerknemerPortaal(){
             {showArtiest && <VoegArtiestToeAanLijst />}
             {showZaal && <VoegZaalToe />}
             {showVoorstelling && <VoorstellingAdding />}
-
             <br></br>
             <br></br>
             <br></br>

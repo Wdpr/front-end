@@ -9,7 +9,7 @@ export function VoegZaalToe() {
 
   async function submitHandler(e) {
     e.preventDefault();
-    fetch(config.ApiUrl+"/api/zaal/nieuweZaal", {
+    fetch(config.ApiUrl + "/api/zaal/nieuweZaal", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + sessionStorage.getItem("token") },
       body: JSON.stringify({
@@ -36,7 +36,6 @@ export function VoegZaalToe() {
       return array
     }
 
-
     if (aantalStoelen === 0) {
       return 0
     }
@@ -47,28 +46,7 @@ export function VoegZaalToe() {
       return maakLijst(10)
     }
     return maakLijst(20)
-
   }
-
-
-  // useEffect(() => {
-  //   maakStoelen()
-  // }, []);
-
-
-  function maakStoelen() {
-    const totaalAantalStoelen = eersterng + tweederng + derderng
-    const aantalRijenEersteCategorie = berekenAantalRijenPerCategorie(eersterng, 1)
-    const aantalRijenTweedeCategorie = berekenAantalRijenPerCategorie(tweederng, 2)
-    const aantalRijenDerdeCategorie = berekenAantalRijenPerCategorie(derderng, 3)
-
-    const stoelen = [...aantalRijenEersteCategorie, ...aantalRijenTweedeCategorie, ...aantalRijenDerdeCategorie]
-
-        
-
-  }
-
-
 
   return (
     <form onSubmit={submitHandler}>
@@ -87,19 +65,8 @@ export function VoegZaalToe() {
           </div>
         </div>
       </div>
-      <div className='zaal-concept'>
-      
-      </div>
     </form>
   )
-
-
-
 }
 
-
 export default VoegZaalToe;
-
-
-
-

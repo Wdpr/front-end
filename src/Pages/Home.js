@@ -18,7 +18,7 @@ export class Home extends Component {
   }
 
   populateVoorstellingenData() {
-    fetch(config.ApiUrl+'/api/Voorstelling')
+    fetch(config.ApiUrl + '/api/Voorstelling')
       .then(response => response.json())
       .then(data => {
         this.setState({ voorstellingen: data, loading: false });

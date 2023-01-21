@@ -12,7 +12,7 @@ export function VoegArtiestToeAanLijst() {
             setError(true)
         }
         else {
-            fetch(config.ApiUrl+"/api/artiest/NieuweArtiest", {
+            fetch(config.ApiUrl + "/api/artiest/NieuweArtiest", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Authorization": "Bearer " + sessionStorage.getItem("token") },
                 body: JSON.stringify({
@@ -30,7 +30,6 @@ export function VoegArtiestToeAanLijst() {
         <form onSubmit={submitHandler}>
             <div className="container">
                 <h1>Voeg Een Artiest Toe</h1>
-
                 <div className="col-sm-8">
                     <div className="row my-3">
                         <div className="col-Artiest">

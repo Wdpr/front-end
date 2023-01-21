@@ -1,9 +1,7 @@
 import React from "react";
 import config from "../../config.json";
 
-
 const AdminPortaal = () => {
-
     const [gebruikersnaam, setGebruikersnaam] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [wachtwoord, setWachtwoord] = React.useState('');
@@ -11,9 +9,8 @@ const AdminPortaal = () => {
 
     function submitHandler(e) {
         e.preventDefault();
-        console.log("email en wachtwoord zijn goed")
 
-        fetch(config.ApiUrl+"/api/bezoeker/registreer/medewerker", {
+        fetch(config.ApiUrl + "/api/bezoeker/registreer/medewerker", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -53,14 +50,11 @@ const AdminPortaal = () => {
                             <input className="formFieldInput" type="Wachtwoord" name="Password" placeholder="Vul het wachtwoord in" onChange={(e) => setWachtwoord(e.target.value)} />
                         </label>
                     </div>
-                    
                     <div>
                         <button className='formFieldButton' type="submit">Registreren</button>
                     </div>
                 </form>
-
             </div>
-
         </div>
     )
 }

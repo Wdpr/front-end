@@ -2,10 +2,10 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import img from '../../assets/guido-weijers.jpg'
 
-export const VoorstellingMiniCard = ({voorstelling}) => {
+export const VoorstellingMiniCard = ({ voorstelling }) => {
     const navigate = useNavigate();
     const handleClick = (e) => {
-        navigate("/Voorstelling/"+voorstelling.id, { state: voorstelling })
+        navigate("/Voorstelling/" + voorstelling.id, { state: voorstelling })
     }
 
     return (

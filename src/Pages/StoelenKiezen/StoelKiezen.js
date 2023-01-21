@@ -1,5 +1,5 @@
 import React from "react";
-import{ useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import config from "../../config.json";
 
@@ -10,19 +10,16 @@ const StoelKiezen = ({ voorstelling }) => {
   const [eersteRang, setEersteRang] = useState()
   const [tweedeRang, setTweedeRang] = useState()
   const [derdeRang, setDerdeRang] = useState()
-
   const [zaalLaden, setZaalLaden] = useState(false)
-  
   const [reserveringen, setReserveringen] = useState([]);
 
-  //haal de reserveringen op voor het vullen van de al geboekte stoelen
   async function haalReserveringenOp() {
     const token = sessionStorage.getItem("token")
     if (token === null) {
       alert("U moet ingelogd zijn om een reservering te maken")
       navigate("/login")
     }
-    const responsReserveringen = await fetch(config.ApiUrl+'/api/reservering/', {
+    const responsReserveringen = await fetch(config.ApiUrl + '/api/reservering/', {
       method: "GET",
       headers: { "Authorization": "Bearer " + token }
     })
@@ -33,23 +30,19 @@ const StoelKiezen = ({ voorstelling }) => {
 
   async function haalZaalOp(zaal) {
     setZaalLaden(true)
-    console.log('Loading data...')
-    var respons = await fetch(config.ApiUrl+'/api/zaal/' + zaal)
+    var respons = await fetch(config.ApiUrl + '/api/zaal/' + zaal)
     var data = await respons.json();
     haalReserveringenOp()
     setEersteRang(data.aantalEersteRang)
     setTweedeRang(data.aantalTweedeRang)
     setDerdeRang(data.aantalDerdeRang)
     setZaalLaden(false)
-    console.log('Data loaded!')
   }
 
-  //haalt de stoelen uit de zaal in de state
   useEffect(() => {
     haalZaalOp(state.zaal.id)
   }, [])
 
-  //maakt de stoelen aan & filtert de al gereserveerde stoelen
   useEffect(() => {
     maakStoelen();
     if (reserveringen.length > 0) {
@@ -64,7 +57,6 @@ const StoelKiezen = ({ voorstelling }) => {
       });
     }
   }, [reserveringen, zaalLaden]);
-
 
   function berekenAantalRijenPerCategorie(aantalStoelen, rangnr) {
     function maakLijst(aantalStoelenPerRij) {
@@ -99,29 +91,22 @@ const StoelKiezen = ({ voorstelling }) => {
     //vullen van stoelen met alle waardes 0
     const initialStoelen = stoelen.map(row => row.map(seat => 0));
     setSeats(initialStoelen)
-    //vullen van de categorieen
     setCategories(stoelen)
-
   }
 
   const [seats, setSeats] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   //prijzen per categorie
   const prices = [state.prijs * 1.8, state.prijs * 1.4, state.prijs];
 
-  const [selectedSeats, setSelectedSeats] = useState([]);
-
   const handleSeatClick = (rijnr, stoelnr) => {
-    // Kopie van de stoelen array
     const newSeats = [...seats];
-    // Check of stoel bezet is.
     if (newSeats[rijnr][stoelnr] === 2) {
       return;
     }
-    // Omzetten van vrije stoel naar selected
     newSeats[rijnr][stoelnr] = 1 - newSeats[rijnr][stoelnr];
-    // Updaten van de state met de nieuwe seats array
     setSeats(newSeats);
     const newSelectedSeats = [...selectedSeats];
     // Toevoegen aan selected
@@ -134,29 +119,22 @@ const StoelKiezen = ({ voorstelling }) => {
         1
       );
     }
-    // Updaten van de state met nieuwe selectedSeats 
     setSelectedSeats(newSelectedSeats);
   };
 
-  //Berekenen van totale prijs van geselecteerde stoelen
   const totalPrice = selectedSeats.reduce((total, seat) => {
     return total + prices[categories[seat.rijnr][seat.stoelnr] - 1];
   }, 0);
 
-
-  //functie voor het plaatsen van de bestelling
   function handleReserveerButton() {
-    
-    // go to reserveringpage
     state.bestelling = { stoelen: selectedSeats, prijs: totalPrice }
-    navigate('/reserveren', {state : state})
+    navigate('/reserveren', { state: state })
   }
 
   return (
     <>
       {/* <p>{voorstelling.naam}</p> */}
       <div className="stoelContainer">
-
         <div className="stoelKeuze">
           <div className="scherm">
             <h4>Toneel</h4>
@@ -182,10 +160,9 @@ const StoelKiezen = ({ voorstelling }) => {
               | Tweederang €{state.prijs * 1.4} <span><button className="seat-button category-2" /> </span>
               | Derderang €{state.prijs} <span><button className="seat-button category-3" /> </span>
               | Bezet <span><button className="seat-button reserved" /> </span>
-              </p>
+            </p>
           </span>
         </div>
-
         <div className="stoelInfo">
           <div >
             Geselecteerde stoelen:
@@ -201,8 +178,6 @@ const StoelKiezen = ({ voorstelling }) => {
             <button onClick={handleReserveerButton} className="button">Reserveer</button>
           </div>
         </div>
-        
-
       </div>
     </>
   );

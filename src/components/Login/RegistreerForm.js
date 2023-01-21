@@ -16,11 +16,11 @@ export const RegistreerForm = () => {
 
         if (email.includes("@") && email.includes(".") && email.length >= 6 && email.length <= 35) {
             if (wachtwoord.length >= 6 &&
-                wachtwoord.length <= 24 && 
-                wachtwoord.match(tekens) && 
-                wachtwoord.match(kleineletters) && 
-                wachtwoord.match(hoofdletters) && 
-                wachtwoord.match(cijfers) ) {
+                wachtwoord.length <= 24 &&
+                wachtwoord.match(tekens) &&
+                wachtwoord.match(kleineletters) &&
+                wachtwoord.match(hoofdletters) &&
+                wachtwoord.match(cijfers)) {
                 return true
             }
             alert("U moet voldoen aan de eisen voor de invoervelden");
@@ -37,7 +37,7 @@ export const RegistreerForm = () => {
         if (!emailEnWachtwoordControle(e)) return
         console.log("email en wachtwoord zijn goed")
 
-        fetch(config.ApiUrl+"/api/bezoeker/registreer", {
+        fetch(config.ApiUrl + "/api/bezoeker/registreer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -88,5 +88,4 @@ export const RegistreerForm = () => {
             </div>
         </form>
     );
-
 }

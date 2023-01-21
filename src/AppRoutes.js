@@ -5,9 +5,9 @@ import { LoginPage } from "./Pages/Login/LoginPage";
 import { CreateAccountPage } from "./Pages/Login/CreateAccountPage";
 import { StoelKiezenPage } from "./Pages/StoelenKiezen/StoelKiezenPage";
 import { ReserveringPage } from "./Pages/ReserveringPage";
-import {MijnAccountPage  } from "./Pages/MijnAccount/MijnAccountPage";
-import {DonateursHome  } from "./Pages/DonatiePage/DonateursHome";
-import {DonatiePagina  } from "./Pages/DonatiePage/DonatiePagina";
+import { MijnAccountPage } from "./Pages/MijnAccount/MijnAccountPage";
+import { DonateursHome } from "./Pages/DonatiePage/DonateursHome";
+import { DonatiePagina } from "./Pages/DonatiePage/DonatiePagina";
 import { AList } from "./Pages/ArtiestLijst/ArtiestLijst";
 import { VoorstellingDetails } from "./components/Voorstelling/VoorstellingDetails";
 import { Contact } from "./Pages/Contact";
@@ -41,7 +41,7 @@ const AppRoutes = [
   {
     path: '/StoelKiezen',
     element: <StoelKiezenPage />
-  },  
+  },
   {
     path: '/Reserveren',
     element: <ReserveringPage />
@@ -67,7 +67,7 @@ const AppRoutes = [
     element: <AList />
   },
   {
-    path : '/Contact',
+    path: '/Contact',
     element: <Contact />
   }
 ];
