@@ -13,7 +13,7 @@ pool:
 
 variables:
   uiSource: 'src'
-  uiBuild: 'build'
+  uiBuild: '/build'
 
 steps:
 - task: NodeTool@0
