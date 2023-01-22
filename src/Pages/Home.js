@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { VoorstellingMiniCard } from '../components/Voorstelling/VoorstellingMiniCard';
 import config from "../config.json";
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
   static displayName = Home.name;

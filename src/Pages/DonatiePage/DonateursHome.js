@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { VoorstellingBigCard } from '../../components/Voorstelling/VoorstellingBigCard';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from 'react';
 import config from "../../config.json";
 
