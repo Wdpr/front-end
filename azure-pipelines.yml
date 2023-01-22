@@ -12,19 +12,20 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  uiSource: '/src'
-  uiBuild: '/build'
+  uiSource: 'src'
+  uiBuild: 'build'
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.8.168.25	'
+    checkLatest: true
   displayName: 'Install Node.js'
 
 
 - script: |
     npm install
     npm run build
+    popd
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
