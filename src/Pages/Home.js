@@ -60,7 +60,7 @@ export class Home extends Component {
               </div>
               <div >
                 <br />
-                <a className='LinkNaarProgrammering' href="/Voorstelling">Bekijk hier de volledige programmering</a>
+                <Link className='LinkNaarProgrammering' to="/Voorstelling">Bekijk hier de volledige programmering</Link>
               </div>
             </div>
           </div>

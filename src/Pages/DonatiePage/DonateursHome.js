@@ -91,7 +91,7 @@ export const DonateursHome = () => {
                     <p>Indien u totaal €1000 heeft gedoneerd, krijgt u toegang tot de speciale programmering! </p>
                 </div>
                 <div className="donateursKnop">
-                    <button><a className="donatieLink" href="/Doneren">Klik hier om te doneren!</a></button>
+                    <button><Link className="donatieLink" to="/Doneren">Klik hier om te doneren!</Link></button>
                 </div>
             </div>
             <div>
