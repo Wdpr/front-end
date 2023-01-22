@@ -33,6 +33,7 @@ steps:
   inputs:
     command: 'publish'
     workingDir: '.'
+    publishEndpoint: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(uiBuild)'
