@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  uiBuild: '/build'
+  uiBuild: 'build'
 
 steps:
 - task: NodeTool@0
