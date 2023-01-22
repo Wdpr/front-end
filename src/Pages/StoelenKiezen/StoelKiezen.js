@@ -59,6 +59,7 @@ const StoelKiezen = ({ voorstelling }) => {
   }, [reserveringen, zaalLaden]);
 
   function berekenAantalRijenPerCategorie(aantalStoelen, rangnr) {
+    if (aantalStoelen === 0) return null
     function maakLijst(aantalStoelenPerRij) {
       let array = []
       for (let i = 0; i < aantalStoelen / aantalStoelenPerRij; i++) {
@@ -86,7 +87,12 @@ const StoelKiezen = ({ voorstelling }) => {
     const aantalRijenEersteCategorie = berekenAantalRijenPerCategorie(eersteRang, 1)
     const aantalRijenTweedeCategorie = berekenAantalRijenPerCategorie(tweedeRang, 2)
     const aantalRijenDerdeCategorie = berekenAantalRijenPerCategorie(derdeRang, 3)
-    const stoelen = [...aantalRijenEersteCategorie, ...aantalRijenTweedeCategorie, ...aantalRijenDerdeCategorie]
+    let stoelen = []
+    if (aantalRijenDerdeCategorie === null) {
+      stoelen = [...aantalRijenEersteCategorie, ...aantalRijenTweedeCategorie]
+    } else {
+      stoelen = [...aantalRijenEersteCategorie, ...aantalRijenTweedeCategorie, ...aantalRijenDerdeCategorie]
+    }
 
     //vullen van stoelen met alle waardes 0
     const initialStoelen = stoelen.map(row => row.map(seat => 0));
