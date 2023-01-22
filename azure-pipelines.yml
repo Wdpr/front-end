@@ -4,16 +4,14 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
- branches:
-     include:
-         - main
+ - main
 
 pool:
   vmImage: 'windows-latest'
 
 variables:
   uiSource: 'src'
-  uiBuild: '/build'
+  uiBuild: '**/*/build'
 
 steps:
 - task: NodeTool@0
