@@ -11,7 +11,7 @@ pool:
 
 variables:
   uiSource: 'src'
-  uiBuild: '**/build'
+  uiBuild: 'build'
 
 steps:
 - task: NodeTool@0
@@ -27,6 +27,13 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(uiBuild)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(uiBuild)'
