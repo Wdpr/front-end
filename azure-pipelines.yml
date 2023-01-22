@@ -36,7 +36,7 @@ steps:
     replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(uiBuild)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'webUiWDPR'
     publishLocation: 'Container'
 
