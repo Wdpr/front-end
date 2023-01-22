@@ -10,8 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  uiSource: 'front-end'
-  uiBuild: '$(uiSource)/build'
+  uiBuild: '/build'
 
 steps:
 - task: NodeTool@0
@@ -23,7 +22,6 @@ steps:
 
 
 - script: |
-    pushd $(uiSource)
     npm install
     npm run build
     popd
