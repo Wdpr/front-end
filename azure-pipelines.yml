@@ -18,6 +18,8 @@ variables:
 steps:
 - task: NodeTool@0
   inputs:
+    versionSource: 'spec'
+    versionSpec: '10.x'
     checkLatest: true
   displayName: 'Install Node.js'
 
@@ -25,7 +27,6 @@ steps:
 - script: |
     npm install
     npm run build
-    popd
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
