@@ -10,6 +10,8 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
   uiBuild: 'build'
 
 steps:
@@ -27,16 +29,13 @@ steps:
     popd
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@2
+- task: Npm@1
   inputs:
-    rootFolderOrFile: '$(uiBuild)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    command: 'publish'
+    workingDir: '.'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(uiBuild)'
     ArtifactName: 'webUiWDPR'
     publishLocation: 'Container'
 
@@ -45,5 +44,5 @@ steps:
     azureSubscription: 'Gratis proefversie(2bce5fe6-6b21-4b16-a549-7bf47b41de1b)'
     appType: 'webApp'
     appName: 'wdpr-front-end'
-    package: '$(Build.ArtifactStagingDirectory)'
+    package: '$(uiBuild)'
     deploymentMethod: 'auto'
