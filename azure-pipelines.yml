@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  uiSource: 'BACK-END'
+  uiSource: 'front-end'
   uiBuild: '$(uiSource)/build'
 
 steps:
