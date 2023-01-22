@@ -11,7 +11,7 @@ pool:
 
 variables:
   uiSource: 'BACK-END'
-  uiBuild: '$(uiSource)/build'
+  uiBuild: '**/build'
 
 steps:
 - task: NodeTool@0
