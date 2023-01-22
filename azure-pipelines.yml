@@ -4,18 +4,39 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+ branches:
+     include:
+         - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'windows-latest'
+
+variables:
+  uiSource: '/src'
+  uiBuild: '/build'
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '10.8.168.25	'
   displayName: 'Install Node.js'
+
 
 - script: |
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(uiBuild)'
+    ArtifactName: 'webUiWDPR'
+    publishLocation: 'Container'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Gratis proefversie(2bce5fe6-6b21-4b16-a549-7bf47b41de1b)'
+    appType: 'webApp'
+    appName: 'wdpr-front-end'
+    package: '$(Build.ArtifactStagingDirectory)'
+    deploymentMethod: 'auto'
