@@ -10,8 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  uiSource: 'BACK-END'
-  uiBuild: '**/build'
+  uiBuild: 'build'
 
 steps:
 - task: NodeTool@0
@@ -25,6 +24,7 @@ steps:
 - script: |
     npm install
     npm run build
+    popd
   displayName: 'npm install and build'
 
 - task: ArchiveFiles@2
