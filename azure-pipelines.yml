@@ -11,7 +11,7 @@ pool:
 
 variables:
   uiSource: 'BACK-END'
-  uiBuild: '**/build'
+  uiBuild: '$(uiSource)/build'
 
 steps:
 - task: NodeTool@0
@@ -23,8 +23,10 @@ steps:
 
 
 - script: |
+    pushd $(uiSource)
     npm install
     npm run build
+    popd
   displayName: 'npm install and build'
 
 - task: ArchiveFiles@2
